@@ -1,14 +1,15 @@
 # Render Blueprint —— 数分学堂（数学分析学习网站）
 # 用法见 DEPLOY_RENDER.md
-# 说明：
-#   type: static        -> Render 静态站点
+# 说明（依据官方 Blueprint Spec）：
+#   type: web + runtime: static  -> 静态站点（不是 type: static）
 #   rootDir             -> 相对仓库根目录，网站代码所在子目录
-#   staticPublishPath   -> 发布目录（相对 rootDir）；纯静态站无需构建，直接发布 “.”
+#   buildCommand        -> 纯静态站无需构建，放一个无害命令即可
+#   staticPublishPath   -> 发布目录（相对 rootDir）为 “.”
 services:
-  - type: static
+  - type: web
     name: shuxue-fenxi
     runtime: static
     rootDir: math-analysis-site
+    buildCommand: echo "pure static site - no build step"
     staticPublishPath: .
-    autoDeploy: true
-    pullRequestPreviewsEnabled: false
+    autoDeployTrigger: commit

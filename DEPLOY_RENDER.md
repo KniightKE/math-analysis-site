@@ -4,11 +4,14 @@
 仓库根目录已放好 `render.yaml`（Blueprint），并配置了：
 
 ```yaml
-type: static
-name: shuxue-fenxi
-rootDir: math-analysis-site      # 网站代码所在子目录
-staticPublishPath: .            # 发布整个子目录（无需构建）
-autoDeploy: true                # 推送后自动部署
+services:
+  - type: web                    # 静态站点：type 用 web，不能写 type: static
+    name: shuxue-fenxi
+    runtime: static              # 加上 runtime: static 即表示静态站点
+    rootDir: math-analysis-site  # 网站代码所在子目录
+    buildCommand: echo "pure static site - no build step"
+    staticPublishPath: .         # 发布整个子目录
+    autoDeployTrigger: commit    # 推送后自动部署
 ```
 
 ## 前提：把代码推到 Git 仓库
