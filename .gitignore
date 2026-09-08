@@ -1,0 +1,12 @@
+# 打包产物/本地快照不入库
+*.zip
+*.tgz
+
+# Python 构建缓存
+__pycache__/
+*.pyc
+
+# 本地服务器/测试脚本残留
+run_shot.js
+check_all.js
+smoke.js
